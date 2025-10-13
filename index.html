@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferramentas de Escritório</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Minhas Ferramentas de Escritório</h1>
+    </header>
+
+    <main>
+      <div class="tool-card">
+        <div class="tool-header">
+          <h2>Limpador de Números - Autorização - Consulta</h2>
+        </div>
+        <div class="tool-body">
+          <label for="inputNumero">Insira o número com espaços/traços:</label>
+          <textarea
+            id="inputNumero"
+            rows="4"
+            placeholder="(11) 9 9999-1234"
+          ></textarea>
+
+          <button id="btnLimpar">Limpar Número para autorização</button>
+          <button id="btnLimparAut">Limpar número para consulta</button>
+
+          <label for="outputNumero">Resultado:</label>
+          <textarea
+            id="outputNumero"
+            rows="4"
+            placeholder="O resultado aparecerá aqui..."
+          ></textarea>
+        </div>
+      </div>
+      <!-- funcao para   -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <h2>Números Administrativos - Bancos</h2>
+        </div>
+
+        <h3>SAQUA</h3>
+        <p>61210168026</p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

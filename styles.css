@@ -1,0 +1,122 @@
+/* Configurações Globais e Reset Simples */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* No seu seletor main, adicione as novas propriedades */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%; /* Garante que o main ocupe a largura toda */
+  padding: 20px; /* Adiciona um respiro nas laterais */
+}
+
+/* No seu seletor .tool-card, substitua width e max-width pela propriedade flex */
+.tool-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin-bottom: 20px; /* Você pode remover isso se o 'gap' do main for suficiente */
+
+  /* A mágica para o layout responsivo em grade */
+  flex: 1 1 300px; /* Cresce, Encolhe, Tamanho Base */
+
+  /* Adicione um max-width para evitar que ele fique GIGANTE em telas muito largas */
+  max-width: 400px;
+}
+
+header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+/* Estilo do Cartão de Ferramenta */
+.tool-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  width: 100%;
+  max-width: 500px; /* Define uma largura máxima para não ficar muito largo em telas grandes */
+  margin-bottom: 20px;
+}
+
+.tool-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: #34495e;
+}
+
+/* Estilo do Corpo do Cartão (onde ficam os campos) */
+.tool-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre os elementos filhos (label, textarea, button) */
+}
+
+label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+textarea,
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit; /* Usa a mesma fonte do body */
+}
+
+textarea {
+  resize: vertical; /* Permite redimensionar verticalmente */
+  min-height: 20px;
+  /*  max-height: 70px; Altura mínima para o campo de texto */
+}
+
+/* Estilo específico para o campo de resultado (somente leitura) */
+textarea[readonly] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+button:hover {
+  background-color: #2980b9;
+}
