@@ -42,10 +42,97 @@
         </div>
         <!-- adicionar uma função para adicionar os números com inputs e salvá-los via localhost -->
 
-        <h3>SAQUA</h3>
-        <p>61210168026</p>
+        <div class="social-banks-numbers">
+          <input
+            type="text"
+            name="addBankName"
+            id="addBankName"
+            placeholder="Nome do banco"
+          />
+          <input
+            type="text"
+            name="addBankNumber"
+            id="addBankNumber"
+            placeholder="Número do banco"
+          />
+          <button id="btnAddBank">Adicionar</button>
+          <div id="bankList">
+            <!-- Lista de bancos será renderizada aqui -->
+        </div>
       </div>
     </main>
+    <script>
+      <!-- adicionar uma função para adicionar os números com inputs e salvá-los via localStorage e carregar os dados do localStorage-->
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const bankList = document.getElementById("bankList");
+        const addBankName = document.getElementById("addBankName");
+        const addBankNumber = document.getElementById("addBankNumber");
+        const btnAddBank = document.getElementById("btnAddBank");
+
+        // Função para carregar os bancos do localStorage
+        function loadBanks() {
+          const banks = JSON.parse(localStorage.getItem("banks")) || [];
+          bankList.innerHTML = "";
+          banks.forEach((bank, index) => {
+            const bankItem = document.createElement("div");
+            bankItem.className = "bank-item";
+            bankItem.innerHTML = `
+              <h3>${bank.name}</h3>
+              <span><strong>Número</strong>: ${bank.number}</span><button data-index="${index}" class="delete-bank">Excluir</button>
+            `;
+            bankList.appendChild(bankItem);
+          });
+        }
+
+        // Função para adicionar um banco
+        btnAddBank.addEventListener("click", function () {
+          const name = addBankName.value.trim();
+          const number = addBankNumber.value.trim();
+          if (name && number) {
+            const banks = JSON.parse(localStorage.getItem("banks")) || [];
+            banks.push({ name, number });
+            localStorage.setItem("banks", JSON.stringify(banks));
+            addBankName.value = "";
+            addBankNumber.value = "";
+            loadBanks();
+          }
+        });
+
+        // Função para excluir um banco
+        bankList.addEventListener("click", function (e) {
+          if (e.target.classList.contains("delete-bank")) {
+            const index = e.target.getAttribute("data-index");
+            const banks = JSON.parse(localStorage.getItem("banks")) || [];
+            banks.splice(index, 1);
+            localStorage.setItem("banks", JSON.stringify(banks));
+            loadBanks();
+          }
+        });
+
+        // Carregar os bancos ao iniciar
+        loadBanks();
+      });
+
+      //mudar estilo do botão excluir
+      document.addEventListener("DOMContentLoaded", function () {
+        const style = document.createElement("style");
+        style.innerHTML = `
+          .delete-bank {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+          }
+          .delete-bank:hover {
+            background-color: #ff1a1a;
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    </script>
 
     <script src="script.js"></script>
   </body>
