@@ -120,3 +120,20 @@ button {
 button:hover {
   background-color: #2980b9;
 }
+
+.social-banks-numbers {
+  display: flex;
+  justify-content: center;
+}
+.inputs-banks {
+  display: flex;
+  flex-direction: column;
+  > input {
+    padding: 5px;
+    border-right: none;
+  }
+}
+#btnAddBank {
+  border-top-left-radius: none;
+  border-bottom-left-radius: none;
+}

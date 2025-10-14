@@ -43,22 +43,24 @@
         <!-- adicionar uma função para adicionar os números com inputs e salvá-los via localhost -->
 
         <div class="social-banks-numbers">
-          <input
-            type="text"
-            name="addBankName"
-            id="addBankName"
-            placeholder="Nome do banco"
-          />
-          <input
-            type="text"
-            name="addBankNumber"
-            id="addBankNumber"
-            placeholder="Número do banco"
-          />
+          <div class="inputs-banks">
+            <input
+              type="text"
+              name="addBankName"
+              id="addBankName"
+              placeholder="Nome do banco"
+            />
+            <input
+              type="text"
+              name="addBankNumber"
+              id="addBankNumber"
+              placeholder="Número do banco"
+            />
+          </div>
           <button id="btnAddBank">Adicionar</button>
-          <div id="bankList">
-            <!-- Lista de bancos será renderizada aqui -->
         </div>
+        <div id="bankList">
+          <!-- Lista de bancos será renderizada aqui -->
       </div>
     </main>
     <script>
