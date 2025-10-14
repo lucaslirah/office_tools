@@ -79,10 +79,37 @@
           banks.forEach((bank, index) => {
             const bankItem = document.createElement("div");
             bankItem.className = "bank-item";
+            //adicionar um botão de copiar o número do banco para a área de transferência
             bankItem.innerHTML = `
-              <h3>${bank.name}</h3>
-              <span><strong>Número</strong>: ${bank.number}</span><button data-index="${index}" class="delete-bank">Excluir</button>
+              <div>
+                <div>
+                  <h3>${bank.name}</h3>
+                  <span><strong>Número</strong>: ${bank.number}</span>
+                </div>
+                  <button data-index="${index}" class="delete-bank">X</button>
+              </div>
+              <button data-number="${bank.number}" class="copy-bank">Copiar Número</button>
             `;
+
+            // Função para copiar o número do banco para a área de transferência
+            const copyButton = bankItem.querySelector(".copy-bank");
+            copyButton.addEventListener("click", function () {
+              const numberToCopy = copyButton.getAttribute("data-number");
+              navigator.clipboard.writeText(numberToCopy).then(
+                /* um retorno visual de copiado*/
+                function () {
+                  copyButton.textContent = "Copiado!";
+                  setTimeout(function () {
+                    copyButton.textContent = "Copiar Número";
+                  }, 2000);
+                },
+                function (err) {
+                  console.error("Erro ao copiar o número: ", err);
+                }
+              );
+            });
+            /*
+            */
             bankList.appendChild(bankItem);
           });
         }
@@ -116,24 +143,7 @@
         loadBanks();
       });
 
-      //mudar estilo do botão excluir
-      document.addEventListener("DOMContentLoaded", function () {
-        const style = document.createElement("style");
-        style.innerHTML = `
-          .delete-bank {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 3px;
-          }
-          .delete-bank:hover {
-            background-color: #ff1a1a;
-          }
-        `;
-        document.head.appendChild(style);
-      });
+      
     </script>
 
     <script src="script.js"></script>

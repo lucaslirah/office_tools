@@ -130,10 +130,56 @@ button:hover {
   flex-direction: column;
   > input {
     padding: 5px;
-    border-right: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
   }
 }
 #btnAddBank {
   border-top-left-radius: none;
   border-bottom-left-radius: none;
+}
+
+.bank-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+
+  > :nth-child(1) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+  }
+}
+.delete-bank {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  width: 3rem;
+}
+.delete-bank:hover {
+  background-color: #c0392b;
+}
+.copy-bank {
+  background-color: #2ecc71;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.copy-bank:hover {
+  background-color: #27ae60;
 }
