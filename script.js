@@ -74,78 +74,78 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // --- SEÇÃO 2: LISTA DE BANCOS ---
+  // --- SEÇÃO 2: LISTA DE NOTAS ---
 
-  const bankList = document.getElementById("bankList");
-  const addBankName = document.getElementById("addBankName");
-  const addBankNumber = document.getElementById("addBankNumber");
-  const btnAddBank = document.getElementById("btnAddBank");
+  const notesList = document.getElementById("notesList");
+  const addNoteTitle = document.getElementById("addNoteTitle");
+  const addNoteContent = document.getElementById("addNoteContent");
+  const btnAddNote = document.getElementById("btnAddNote");
 
-  // Função para carregar os bancos do localStorage
-  function loadBanks() {
-    const banks = JSON.parse(localStorage.getItem("banks")) || [];
-    bankList.innerHTML = "";
-    banks.forEach((bank, index) => {
-      const bankItem = document.createElement("div");
-      bankItem.className = "bank-item";
-      bankItem.innerHTML = `
+  // Função para carregar as notas do localStorage
+  function loadNotes() {
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notesList.innerHTML = "";
+    notes.forEach((note, index) => {
+      const noteItem = document.createElement("div");
+      noteItem.className = "note-item";
+      noteItem.innerHTML = `
                 <div>
                     <div>
-                        <h3>${bank.name}</h3>
-                        <span><strong>Número</strong>: ${bank.number}</span>
+                        <h3>${note.title}</h3>
+                        <span><strong>Conteúdo</strong>: ${note.content}</span>
                     </div>
-                    <button data-index="${index}" class="delete-bank">X</button>
+                    <button data-index="${index}" class="delete-note">X</button>
                 </div>
-                <button data-number="${bank.number}" class="copy-bank">Copiar Número</button>
+                <button data-content="${note.content}" class="copy-note">Copiar Nota</button>
             `;
 
-      // Adiciona o evento de copiar para o botão de cada banco
-      const copyButton = bankItem.querySelector(".copy-bank");
+      // Adiciona o evento de copiar para o botão de cada nota
+      const copyButton = noteItem.querySelector(".copy-note");
       copyButton.addEventListener("click", function () {
-        const numberToCopy = this.getAttribute("data-number");
+        const contentToCopy = this.getAttribute("data-content");
         // Reutilizamos nossa função de copiar!
-        copiarTexto(numberToCopy, this, "Copiar Número");
+        copiarTexto(contentToCopy, this, "Copiar Nota");
       });
 
-      bankList.appendChild(bankItem);
+      notesList.appendChild(noteItem);
     });
   }
 
-  // Função para adicionar um banco
-  btnAddBank.addEventListener("click", function () {
-    const name = addBankName.value.trim();
-    const number = addBankNumber.value.trim();
-    if (name && number) {
-      const banks = JSON.parse(localStorage.getItem("banks")) || [];
-      banks.push({ name, number });
-      localStorage.setItem("banks", JSON.stringify(banks));
-      addBankName.value = "";
-      addBankNumber.value = "";
-      loadBanks();
+  // Função para adicionar uma nota
+  btnAddNote.addEventListener("click", function () {
+    const title = addNoteTitle.value.trim();
+    const content = addNoteContent.value.trim();
+    if (title && content) {
+      const notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.push({ title, content });
+      localStorage.setItem("notes", JSON.stringify(notes));
+      addNoteTitle.value = "";
+      addNoteContent.value = "";
+      loadNotes();
     }
   });
 
-  // Função para excluir um banco (usando delegação de evento)
-  bankList.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-bank")) {
-      if (!confirm("Tem certeza que deseja excluir este banco?")) {
+  // Função para excluir uma nota (usando delegação de evento)
+  notesList.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-note")) {
+      if (!confirm("Tem certeza que deseja excluir esta nota?")) {
         return;
       }
       const index = e.target.getAttribute("data-index");
-      const banks = JSON.parse(localStorage.getItem("banks")) || [];
-      banks.splice(index, 1);
-      localStorage.setItem("banks", JSON.stringify(banks));
-      loadBanks();
+      const notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.splice(index, 1);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      loadNotes();
     }
   });
 
-  // Adicionar banco com a tecla "Enter"
-  addBankNumber.addEventListener("keypress", function (e) {
+  // Adicionar nota com a tecla "Enter"
+  addNoteContent.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
-      btnAddBank.click();
+      btnAddNote.click();
     }
   });
 
-  // Carregar os bancos ao iniciar a página
-  loadBanks();
+  // Carregar as notas ao iniciar a página
+  loadNotes();
 });
