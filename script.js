@@ -89,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const noteItem = document.createElement("div");
       noteItem.className = "note-item";
       noteItem.innerHTML = `
-                <div>
-                    <div>
-                        <h3>${note.title}</h3>
-                        <span><strong>Conteúdo</strong>: ${note.content}</span>
+                <div class="note-header">
+                    <div class="note-text-container">
+                        <h3 class="note-title">${note.title}</h3>
+                        <p class="note-content"><strong>Conteúdo</strong>: ${note.content}</p>
                     </div>
                     <button data-index="${index}" class="delete-note">X</button>
                 </div>

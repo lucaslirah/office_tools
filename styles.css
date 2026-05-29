@@ -143,21 +143,44 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch; /* Stretch to fill card width */
   background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
   width: 100%;
-
-  > :nth-child(1) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0;
-  }
 }
+
+.note-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to top in case content is long */
+  gap: 10px; /* Space between text and delete button */
+  margin-bottom: 8px;
+}
+
+.note-text-container {
+  flex: 1;
+  min-width: 0; /* Crucial: allows flex items to shrink below content size, preventing overflow */
+}
+
+.note-title {
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+  color: #2c3e50;
+  overflow-wrap: break-word;
+}
+
+.note-content {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+  white-space: pre-wrap; /* Preserves line breaks and spaces */
+  overflow-wrap: break-word; /* Wraps very long words (like URLs) */
+  word-break: break-word; /* Fallback for older browsers */
+}
+
 .delete-note {
   background-color: #e74c3c;
   border: none;
@@ -167,6 +190,7 @@ button:hover {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   width: 30px;
+  flex-shrink: 0; /* Prevents the 'X' button from being squished */
 }
 .delete-note:hover {
   background-color: #c0392b;
