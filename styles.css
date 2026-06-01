@@ -65,18 +65,81 @@ h1 {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 16px;
   margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.3s ease, margin-bottom 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.tool-header:hover h2 {
+  color: #3498db;
 }
 
 h2 {
   font-size: 1.25rem;
   color: #34495e;
+  transition: color 0.2s ease;
 }
 
-/* Estilo do Corpo do Cartão (onde ficam os campos) */
+.btn-toggle-collapse {
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f8c8d;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.btn-toggle-collapse:hover {
+  background-color: #f0f3f4;
+  color: #2c3e50;
+}
+
+.chevron-icon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(90deg); /* Points down by default when open */
+}
+
+/* Estilo do Corpo do Cartão com Animação de Colapso Premium */
 .tool-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 1;
+}
+
+.tool-body-content {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaço entre os elementos filhos (label, textarea, button) */
+  gap: 15px; /* Espaço entre os elementos filhos */
+  min-height: 0; /* Crucial para o encolhimento de grid-template-rows 0fr */
+}
+
+/* Estado Colapsado (Minimizado) */
+.tool-card.collapsed .tool-header {
+  border-bottom-color: transparent;
+  margin-bottom: 0;
+  padding-bottom: 0; /* Ajuste para visual ultra compacto */
+}
+
+.tool-card.collapsed .chevron-icon {
+  transform: rotate(0deg); /* Points right when collapsed */
+}
+
+.tool-card.collapsed .tool-body {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none; /* Desativa interações quando recolhido */
 }
 
 label {

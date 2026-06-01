@@ -12,55 +12,67 @@
     </header>
 
     <main>
-      <div class="tool-card">
+      <div class="tool-card" id="cardCleaner">
         <div class="tool-header">
           <h2>Limpador de Números - Autorização - Consulta</h2>
+          <button class="btn-toggle-collapse" aria-label="Minimizar ferramenta">
+            <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
         <div class="tool-body">
-          <label for="inputNumero">Insira o número com espaços/traços:</label>
-          <textarea
-            id="inputNumero"
-            rows="4"
-            placeholder="EX. CONSULTA -  (11) 9 9999-1234 | AUTORIZAÇÃO - CONTA: 11 9 9999-1234"
-          ></textarea>
+          <div class="tool-body-content">
+            <label for="inputNumero">Insira o número com espaços/traços:</label>
+            <textarea
+              id="inputNumero"
+              rows="4"
+              placeholder="EX. CONSULTA -  (11) 9 9999-1234 | AUTORIZAÇÃO - CONTA: 11 9 9999-1234"
+            ></textarea>
 
-          <button id="btnLimpar">Limpar Número para autorização</button>
-          <button id="btnLimparAut">Limpar número para consulta</button>
+            <button id="btnLimpar">Limpar Número para autorização</button>
+            <button id="btnLimparAut">Limpar número para consulta</button>
 
-          <label for="outputNumero">Resultado:</label>
-          <textarea
-            id="outputNumero"
-            rows="4"
-            placeholder="O resultado aparecerá aqui..."
-          ></textarea>
+            <label for="outputNumero">Resultado:</label>
+            <textarea
+              id="outputNumero"
+              rows="4"
+              placeholder="O resultado aparecerá aqui..."
+            ></textarea>
+          </div>
         </div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" id="cardNotes">
         <div class="tool-header">
           <h2>Notas rápidas à mão</h2>
+          <button class="btn-toggle-collapse" aria-label="Minimizar ferramenta">
+            <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
         <!-- adicionar uma função para adicionar os valores dos inputs e salvá-los via localhost -->
 
-        <div class="notes-contents">
-          <div class="inputs-notes">
-            <input
-              type="text"
-              name="addNoteTitle"
-              id="addNoteTitle"
-              placeholder="Título da nota"
-            />
-            <input
-              type="text"
-              name="addNoteContent"
-              id="addNoteContent"
-              placeholder="Conteúdo da nota"
-            />
+        <div class="tool-body">
+          <div class="tool-body-content">
+            <div class="notes-contents">
+              <div class="inputs-notes">
+                <input
+                  type="text"
+                  name="addNoteTitle"
+                  id="addNoteTitle"
+                  placeholder="Título da nota"
+                />
+                <input
+                  type="text"
+                  name="addNoteContent"
+                  id="addNoteContent"
+                  placeholder="Conteúdo da nota"
+                />
+              </div>
+              <button id="btnAddNote">Adicionar</button>
+            </div>
+            <div id="notesList">
+              <!-- Lista de bancos será renderizada aqui -->
+            </div>
           </div>
-          <button id="btnAddNote">Adicionar</button>
-        </div>
-        <div id="notesList">
-          <!-- Lista de bancos será renderizada aqui -->
         </div>
       </div>
     </main>
