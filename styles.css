@@ -21,7 +21,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: .5rem;
   width: 100%; /* Garante que o main ocupe a largura toda */
   padding: 20px; /* Adiciona um respiro nas laterais */
 }
@@ -32,7 +32,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 24px;
-  margin-bottom: 20px; /* Você pode remover isso se o 'gap' do main for suficiente */
+  /* margin-bottom: 20px; Você pode remover isso se o 'gap' do main for suficiente */
 
   /* A mágica para o layout responsivo em grade */
   flex: 1 1 300px; /* Cresce, Encolhe, Tamanho Base */
@@ -58,7 +58,6 @@ h1 {
   padding: 24px;
   width: 100%;
   max-width: 500px; /* Define uma largura máxima para não ficar muito largo em telas grandes */
-  margin-bottom: 20px;
 }
 
 .tool-header {
